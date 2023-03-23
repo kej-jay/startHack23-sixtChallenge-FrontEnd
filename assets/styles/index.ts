@@ -90,7 +90,9 @@ export default StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 30,
-    paddingHorizontal: 80
+    paddingHorizontal: 80,
+    position: 'absolute',
+    top: 50,
   },
   informationTitle: {
     paddingTop: 25,
@@ -218,7 +220,6 @@ export default StyleSheet.create({
     shadowColor: DARK_GRAY,
     shadowOffset: { height: 10, width: 0 },
   },
-
   // COMPONENT - CITY
   city: {
     backgroundColor: WHITE,
@@ -331,7 +332,6 @@ export default StyleSheet.create({
     color: GRAY,
     fontSize: 13,
   },
-
   // CONTAINER - GENERAL
   bg: {
     flex: 1,
