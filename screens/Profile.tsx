@@ -7,8 +7,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Icon, ProfileItem } from "../components";
-import DEMO from "../assets/data/demo";
+import DEMO from "../assets/data/demoUser";
 import styles, { WHITE } from "../assets/styles";
+import Slider from "../components/Slider"
+import DropDown from "../components/DropDown";
 
 const Profile = () => {
   const {
@@ -72,6 +74,29 @@ const Profile = () => {
             <Text style={styles.textButton}>Start chatting</Text>
           </TouchableOpacity>
         </View>
+
+        <View style={styles.sliderCardItem}>
+          <View style={styles.informationTitle}> 
+            <Text>
+              Risk level
+            </Text>
+          </View>
+          <View style={styles.sliderItem}>
+            <Slider/>
+          </View>
+        </View>
+
+        <View style={styles.dropDownCardItem}>
+          <View style={styles.informationTitle}> 
+            <Text>
+              Select your industries
+            </Text>
+          </View>
+          <View style={styles.dropDownItem}>
+            <DropDown/>
+          </View>
+        </View>
+
       </ScrollView>
     </ImageBackground>
   );
