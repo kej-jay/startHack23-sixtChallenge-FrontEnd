@@ -1,11 +1,7 @@
 export type CardItemT = {
-  description?: string;
+  item: StockT|QuoteT|InfoT|PredictionT;
   hasActions?: boolean;
   hasVariant?: boolean;
-  image: any;
-  isOnline?: boolean;
-  matches?: string;
-  name: string;
 };
 
 export type IconT = {
@@ -38,13 +34,14 @@ export type TabBarIconT = {
   text: string;
 };
 
-export type DataT = {
+export type StockT = {
   id: number;
+  type: "Stock";
   name: string;
   isOnline: boolean;
-  match: string;
+  match: number;
   description: string;
-  message: string;
+  message?: string;
   image: any;
   age?: string;
   info1?: string;
@@ -52,4 +49,32 @@ export type DataT = {
   info3?: string;
   info4?: string;
   location?: string;
+};
+
+export type QuoteT = {
+  id: number;
+  type: "Quote";
+  name: string;
+  quote: string;
+  isTrue: boolean;
+  description: "Is this quote true or not?";
+  explanaition: string;
+};
+
+export type PredictionT = {
+  id: number;
+  type: "Up or Dahn";
+  name: string;
+  image: any;
+  direction: "Up"|"Down";
+  description: string;
+  explanaition: string;
+};
+
+export type InfoT = {
+  id: number;
+  type: "Info";
+  name: string;
+  description: string;
+  explanaition: string;
 };

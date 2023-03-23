@@ -21,7 +21,7 @@ const Profile = () => {
     location,
     match,
     name,
-  } = DEMO[7];
+  } = DEMO[0];
 
   return (
     <ImageBackground

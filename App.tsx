@@ -18,6 +18,7 @@ const App = () => (
       >
         {() => (
           <Tab.Navigator
+            initialRouteName="Explore"
             tabBarOptions={{
               showLabel: false,
               activeTintColor: PRIMARY_COLOR,
@@ -38,19 +39,6 @@ const App = () => (
               },
             }}
           >
-            <Tab.Screen
-              name="Explore"
-              component={Home}
-              options={{
-                tabBarIcon: ({ focused }) => (
-                  <TabBarIcon
-                    focused={focused}
-                    iconName="search"
-                    text="Explore"
-                  />
-                ),
-              }}
-            />
 
             <Tab.Screen
               name="Matches"
@@ -60,21 +48,21 @@ const App = () => (
                   <TabBarIcon
                     focused={focused}
                     iconName="heart"
-                    text="Matches"
+                    text="Favourites"
                   />
                 ),
               }}
             />
 
             <Tab.Screen
-              name="Chat"
-              component={Messages}
+              name="Explore"
+              component={Home}
               options={{
                 tabBarIcon: ({ focused }) => (
                   <TabBarIcon
                     focused={focused}
-                    iconName="chatbubble"
-                    text="Chat"
+                    iconName="search"
+                    text="Explore"
                   />
                 ),
               }}

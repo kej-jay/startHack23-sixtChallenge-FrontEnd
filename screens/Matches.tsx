@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   FlatList,
+  Dimensions,
 } from "react-native";
 import { CardItem, Icon } from "../components";
 import DEMO from "../assets/data/demo";
@@ -18,7 +19,7 @@ const Matches = () => (
   >
     <View style={styles.containerMatches}>
       <View style={styles.top}>
-        <Text style={styles.title}>Matches</Text>
+        <Text style={styles.title}>Your favourite Stocks</Text>
         <TouchableOpacity>
           <Icon name="ellipsis-vertical" color={DARK_GRAY} size={20} />
         </TouchableOpacity>
@@ -30,12 +31,9 @@ const Matches = () => (
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <TouchableOpacity>
-            <CardItem
-              image={item.image}
-              name={item.name}
-              isOnline={item.isOnline}
-              hasVariant
-            />
+            <View style={{width: Dimensions.get("window").width}}>
+              <Text>{item.name}</Text>
+            </View>
           </TouchableOpacity>
         )}
       />

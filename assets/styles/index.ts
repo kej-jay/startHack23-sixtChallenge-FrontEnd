@@ -15,6 +15,10 @@ export const LIKE_ACTIONS = "#B644B2";
 export const DISLIKE_ACTIONS = "#363636";
 export const FLASH_ACTIONS = "#5028D7";
 
+export const ICON_GREEN = "#85BDA6";
+export const ICON_YELLOW = "#FDE12D";
+export const ICON_RED = "#D1345B";
+
 export const DIMENSION_WIDTH = Dimensions.get("window").width;
 export const DIMENSION_HEIGHT = Dimensions.get("window").height;
 
@@ -25,11 +29,29 @@ export default StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
     margin: 10,
+    marginTop: 20,
     elevation: 1,
     shadowOpacity: 0.05,
     shadowRadius: 10,
     shadowColor: BLACK,
     shadowOffset: { height: 0, width: 0 },
+    flex: 1
+  },
+  modalView: {
+    marginTop: 50,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    flex: 1
   },
   matchesCardItem: {
     marginTop: -35,
@@ -77,6 +99,7 @@ export default StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
+    borderWidth: 3,
     backgroundColor: WHITE,
     marginHorizontal: 7,
     alignItems: "center",
@@ -86,6 +109,38 @@ export default StyleSheet.create({
     shadowRadius: 20,
     shadowColor: DARK_GRAY,
     shadowOffset: { height: 10, width: 0 },
+  },
+  yesButton: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    borderWidth: 3,
+    backgroundColor: ICON_GREEN,
+    marginHorizontal: 7,
+    alignItems: "center",
+    justifyContent: "center",
+    elevation: 1,
+    shadowOpacity: 0.15,
+    shadowRadius: 20,
+    shadowColor: DARK_GRAY,
+    shadowOffset: { height: 10, width: 0 },
+    borderColor: ICON_GREEN
+  },
+  noButton: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    borderWidth: 3,
+    backgroundColor: ICON_RED,
+    marginHorizontal: 7,
+    alignItems: "center",
+    justifyContent: "center",
+    elevation: 1,
+    shadowOpacity: 0.15,
+    shadowRadius: 20,
+    shadowColor: DARK_GRAY,
+    shadowOffset: { height: 10, width: 0 },
+    borderColor: ICON_RED
   },
   miniButton: {
     width: 40,
