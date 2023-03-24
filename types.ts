@@ -54,7 +54,6 @@ export type StockT = {
   id: number;
   type: "Stock";
   name: string;
-  isOnline: boolean;
   match: number;
   description: string;
   message?: string;
@@ -65,6 +64,13 @@ export type StockT = {
   info3?: string;
   info4?: string;
   location?: string;
+  graph1?: string;
+  graph2?: string;
+  graph3?: string;
+  sector?: string;
+  risk?: number;
+  popularity?: number;
+  trend?: number;
 };
 
 export type QuoteT = {
@@ -74,7 +80,7 @@ export type QuoteT = {
   quote: string;
   isTrue: boolean;
   description: "Is this quote true or not?";
-  explanaition: string;
+  explanation: string;
 };
 
 export type PredictionT = {
@@ -84,7 +90,7 @@ export type PredictionT = {
   image: any;
   direction: "Up"|"Down";
   description: string;
-  explanaition: string;
+  explanation: string;
 };
 
 export type InfoT = {
@@ -92,5 +98,5 @@ export type InfoT = {
   type: "Info";
   name: string;
   description: string;
-  explanaition: string;
+  explanation: string;
 };

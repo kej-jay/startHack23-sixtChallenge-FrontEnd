@@ -27,6 +27,15 @@ const CardItem = ({
     },
   ];
 
+  const modalImageStyle = [
+    {
+      borderRadius: 8,
+      width: fullWidth - 80,
+      height: 280,
+      objectFit: "fill"
+    },
+  ];
+
   const quoteStyle = [
     {
       borderRadius: 8,
@@ -34,7 +43,17 @@ const CardItem = ({
       height: 350,
       margin: 20,
       fontStyle: "italic", 
-      fontSize: 40,
+      fontSize: 35,
+    }
+  ];
+
+  const infoStyle = [
+    {
+      borderRadius: 8,
+      width: fullWidth - 80,
+      height: 350,
+      margin: 20,
+      fontSize: 30,
     }
   ];
 
@@ -56,6 +75,21 @@ const CardItem = ({
     },
   ];
 
+  let numberToColorMap = {
+    1: ICON_GREEN,
+    2: ICON_YELLOW,
+    3: ICON_RED
+  }
+
+  let industryToIconMap = {
+    "Biotechnology": "beaker-outline",
+    "Technology": "code-slash",
+    "Finance": "cash-outline",
+    "Energy and Transportation": "car-outline",
+    "Retail and Hospitality": "business-outline",
+    "Manufacturing and Healthcare": "construct-outline",
+  }
+
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -67,11 +101,14 @@ const CardItem = ({
           onRequestClose={() => {
           }}>
         <View style={styles.modalView}>
-            {!item.explanaition && (<Text style={nameStyle}>{item.name}</Text>)}
-            {!item.explanaition && (<Text>{item.description}</Text>)}
+            {!item.explanation && (<Text style={nameStyle}>{item.name}</Text>)}
+            {!item.explanation && (<Text>{item.description}</Text>)}
 
-            {item.explanaition && (<Text style={nameStyle}>Explanaition</Text>)}
-            {item.explanaition && (<Text>{item.explanaition}</Text>)}
+            {item.explanation && (<Text style={nameStyle}>Explanation</Text>)}
+            {item.explanation && (<Text>{item.explanation}</Text>)}
+
+            {item.type === "Stock" && (<Image source={{uri: `data:image/jpeg;base64,${item.graph2}`}} style={modalImageStyle} resizeMode="contain"/>)}
+            {item.type === "Stock" && (<Image source={{uri: `data:image/jpeg;base64,${item.graph3}`}} style={modalImageStyle} resizeMode="contain"/>)}
 
             <View style={styles.actionsCardItem}>
               <TouchableOpacity style={styles.button} onPress={() => setModalVisible(false)}>
@@ -87,7 +124,7 @@ const CardItem = ({
       {item.type === "Stock" && (<Pressable onPress={() => setModalVisible(true)} style={{alignItems: "center"}}>
 
         {/* IMAGE */}
-        <Image source={item.image} style={imageStyle}/>
+        <Image source={{uri: `data:image/jpeg;base64,${item.image}`}} style={imageStyle} resizeMode="contain"/>
 
         {/* MATCHES */}
         {item.match && (
@@ -120,7 +157,7 @@ const CardItem = ({
 
           {/* DESCRIPTION */}
           {item.description && (
-            <Text style={quoteStyle}>{item.description}</Text>
+            <Text style={infoStyle}>{item.description}</Text>
           )}
         </Pressable>
       )}
@@ -145,22 +182,22 @@ const CardItem = ({
       <View style={styles.actionsCardItem}>
         {item.type === "Stock" && (
           <>
-            <TouchableOpacity style={{...styles.button, borderColor: ICON_RED}} onPress={() => console.log("far Left")}>
+            <TouchableOpacity style={{...styles.button, borderColor: numberToColorMap[item.trend]}} onPress={() => console.log("far Left")}>
               <Icon name="analytics" color={DISLIKE_ACTIONS} size={30} />
               <Text style={{fontSize: 7}}>Trend</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={{...styles.button, borderColor: ICON_YELLOW}} onPress={() => console.log("mid Left")}>
+            <TouchableOpacity style={{...styles.button, borderColor: numberToColorMap[item.risk]}} onPress={() => console.log("mid Left")}>
               <Icon name="bandage-outline" color={DISLIKE_ACTIONS} size={30} />
               <Text style={{fontSize: 7}}>Risk</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={{...styles.button, borderWidth:1}} onPress={() => console.log("mid Right")}>
-              <Icon name="business-outline" color={DISLIKE_ACTIONS} size={30} />
+              <Icon name={industryToIconMap[item.sector]} color={DISLIKE_ACTIONS} size={30} />
               <Text style={{fontSize: 7}}>Industry</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={{...styles.button, borderColor: ICON_GREEN}} onPress={() => console.log("far Right")}>
+            <TouchableOpacity style={{...styles.button, borderColor: numberToColorMap[item.popularity]}} onPress={() => console.log("far Right")}>
               <Icon name="rocket-outline" color={DISLIKE_ACTIONS} size={30} />
               <Text style={{fontSize: 7}}>Popularity</Text>
             </TouchableOpacity>
